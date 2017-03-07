@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff92310-daf3-40b2-96d7-56685f51f848" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/taxibot/static/css/framework.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/taxibot/static/css/material.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/taxibot/static/js/full_page_renderer-6a7ef05630a3b44589efb7a5bfeb3df1d28e15a2112edff69a038f1dba09aea5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/taxibot/static/js/material.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taxibot/BotManager.py" afterPath="$PROJECT_DIR$/taxibot/BotManager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taxibot/views.py" afterPath="$PROJECT_DIR$/taxibot/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taxibot/templates/index1.html" afterPath="$PROJECT_DIR$/taxibot/templates/index1.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +20,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taxibot/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
@@ -84,8 +79,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taxibot/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="65" lean-forward="true" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
+            <state relative-caret-position="90">
+              <caret line="6" column="62" lean-forward="true" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -93,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waiting_calls.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taxibot/templates/waiting_calls.html">
+      <file leaf-file-name="received1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taxibot/templates/received1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4500">
-              <caret line="300" column="5" lean-forward="false" selection-start-line="300" selection-start-column="5" selection-end-line="300" selection-end-column="5" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -115,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index1.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index1.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taxibot/templates/index1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="151" column="19" lean-forward="false" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="19" />
+            <state relative-caret-position="165">
+              <caret line="93" column="17" lean-forward="true" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -171,8 +166,8 @@
         <option value="$PROJECT_DIR$/taxibot/templates/accepted.html" />
         <option value="$PROJECT_DIR$/taxibot/BotManager.py" />
         <option value="$PROJECT_DIR$/taxibot/templates/index.html" />
-        <option value="$PROJECT_DIR$/taxibot/templates/index1.html" />
         <option value="$PROJECT_DIR$/taxibot/views.py" />
+        <option value="$PROJECT_DIR$/taxibot/templates/index1.html" />
       </list>
     </option>
   </component>
@@ -649,19 +644,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/taxibot/CallManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#2040#2286#0" expanded="false" />
-            <element signature="e#2330#2578#0" expanded="false" />
-            <element signature="e#2626#2888#0" expanded="false" />
-            <element signature="e#2931#3185#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taxibot/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -973,24 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taxibot/templates/index1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="151" column="19" lean-forward="false" selection-start-line="151" selection-start-column="19" selection-end-line="151" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taxibot/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="65" lean-forward="true" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taxibot/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -998,6 +962,32 @@
           <folding>
             <element signature="e#44#76#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taxibot/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="62" lean-forward="true" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taxibot/templates/received1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taxibot/templates/index1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="93" column="17" lean-forward="true" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
