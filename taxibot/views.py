@@ -120,7 +120,7 @@ def clearDB(request):  # delete all calls
      #   print("there are no selected calls")
 
     #TaxiCall.objects.all().delete()
-         return HttpResponseRedirect(reverse("taxibot:callList"))
+        return HttpResponseRedirect(reverse("taxibot:callList"))
 
 def clearDBHistory(request):  # delete all calls
     TaxiCallHistory.objects.all().delete()
