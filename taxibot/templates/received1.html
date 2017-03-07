@@ -70,23 +70,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>19:27</td>
-                <td>Такси</td>
-                <td>Oybek m</td>
-                <td>+998977081127</td>
-                <td>Нужен такси люкс класса</td>
-                <td>Captiva LUX Class</td>
-                <td>01/S027KH</td>
-                <td>5 минут</td>
-                <td>В пути</td>
-                <td>
-                    <div class="radio">
-                        <label><input type="radio" name="chooseRadio"></label>
-                    </div>
-                </td>
-            </tr>
+
 
 
             {% for call in call_list %}
@@ -119,13 +103,14 @@
          {% endif %}
         {% if call.status == "accepted" %}
             <td><font color="green">в пути</font></td>
+            <td>
+            <input type="radio" name = "calls[]"  value="{{ call.call_id }}">
+         </td>
         {% endif %}
         {% if call.status == "arrived" %}
             <td><font color="#2f4f4f">прибыл</font></td>
         {% endif %}
-        <td>
-            <input type="radio" name = "calls[]"  value="{{ call.call_id }}">
-         </td>
+
             </tr>
 
     {% endfor %}
