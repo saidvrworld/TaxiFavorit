@@ -27,7 +27,7 @@ class CallListView(generic.ListView):  #FIRST SECTION, CALLS JUST COME AND HASN'
 
 class calls_with_car_ListView(generic.ListView):   #SECOND SECTION, CALLS ACCEPTED AND HAVE BEEN ATTACHED CAR, NOW MANAGER WAIT FOR USER TO AGREE WITH OFFERED CAR
 
-    template_name = "waiting_calls.html"
+    template_name = "waiting1.html"
     context_object_name = "call_list"
     def get_queryset(self):
         call_list = TaxiCall.objects.filter(status="waiting").order_by("-call_time")
@@ -35,7 +35,7 @@ class calls_with_car_ListView(generic.ListView):   #SECOND SECTION, CALLS ACCEPT
 
 class acceptedCalls(generic.ListView):    # USERS ALREADY AGREE WITH CAR AND CAR ON THE WAY TO USER
 
-    template_name = "accepted.html"
+    template_name = "received1.html"
     context_object_name = "call_list"
     def get_queryset(self):
         call_list = TaxiCall.objects.filter(status__in=["accepted","accepted_cancel","arrived"]).order_by("-call_time")
