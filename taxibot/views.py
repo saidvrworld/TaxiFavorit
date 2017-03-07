@@ -105,7 +105,7 @@ def clearDB(request):  # delete all calls
     #try:
         for call in TaxiCall.objects.all():
             new = TaxiCallHistory.objects.create(call_id=call.call_id, type=call.type, number=call.number,call_time = call.call_time,
-                                           details=call.details,address=call.address,isMap=call.isMap,longitude=call.longitude,latitude=call.latitude)
+                                           details=call.details,address=call.address,IsMap=call.IsMap,longitude=call.longitude,latitude=call.latitude)
             car =None
             try:
                car = call.car_set.all()[0]
