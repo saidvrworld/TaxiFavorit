@@ -28,3 +28,25 @@ class Car(models.Model):
     driver_number = models.CharField(max_length=30,default="недоступен")
     taxi = models.ForeignKey(TaxiCall)
 
+
+
+class TaxiCallHistory(models.Model):
+
+    call_id = models.IntegerField(default=0)
+    IsMap = models.BooleanField(default=False)
+    longitude = models.FloatField(default=0.0)
+    latitude = models.FloatField(default=0.0)
+    address = models.CharField(max_length=500,default="None")
+    type = models.CharField(max_length=100,default="None")
+    number = models.CharField(max_length=20,default="None")
+    details = models.CharField(max_length=500,default="None")
+    call_time = models.TimeField()
+    call_date = models.DateField(auto_now=True)
+
+class CarHistory(models.Model):
+
+    car_type = models.CharField(max_length=200)
+    car_number = models.CharField(max_length=20)
+    car_time = models.IntegerField(default=0)
+    taxi = models.ForeignKey(TaxiCall)
+

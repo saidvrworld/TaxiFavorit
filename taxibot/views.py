@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.views import generic
-from .models import TaxiCall
+from .models import TaxiCall,TaxiCallHistory
 from django.utils import timezone
 from django.http import HttpResponseRedirect,HttpResponse,JsonResponse
 from django.core.urlresolvers import reverse
@@ -19,7 +19,7 @@ botManager = BotManager(bot)
 
 
 class CallListView(generic.ListView):  #FIRST SECTION, CALLS JUST COME AND HASN'T  ACCEPTED BY MANAGER YED
-    template_name = "index1.html"
+    template_name = "new_call_list.html"
     context_object_name = "call_list"
     def get_queryset(self):
         call_list = TaxiCall.objects.filter(status="new").order_by("-call_time")
@@ -27,7 +27,7 @@ class CallListView(generic.ListView):  #FIRST SECTION, CALLS JUST COME AND HASN'
 
 class calls_with_car_ListView(generic.ListView):   #SECOND SECTION, CALLS ACCEPTED AND HAVE BEEN ATTACHED CAR, NOW MANAGER WAIT FOR USER TO AGREE WITH OFFERED CAR
 
-    template_name = "waiting1.html"
+    template_name = "waiting_call.html"
     context_object_name = "call_list"
     def get_queryset(self):
         call_list = TaxiCall.objects.filter(status="waiting").order_by("-call_time")
@@ -35,7 +35,7 @@ class calls_with_car_ListView(generic.ListView):   #SECOND SECTION, CALLS ACCEPT
 
 class acceptedCalls(generic.ListView):    # USERS ALREADY AGREE WITH CAR AND CAR ON THE WAY TO USER
 
-    template_name = "received1.html"
+    template_name = "accepted.html"
     context_object_name = "call_list"
     def get_queryset(self):
         call_list = TaxiCall.objects.filter(status__in=["accepted","accepted_cancel","arrived"]).order_by("-call_time")
@@ -93,15 +93,38 @@ def EndCall(request):
 
 
 
+class DBCalls(generic.ListView):    # History of cars
+
+    template_name = "DBList.html"
+    context_object_name = "call_list"
+    def get_queryset(self):
+        call_list = TaxiCallHistory.objects.all().order_by("-call_date")
+        return call_list
 
 def clearDB(request):  # delete all calls
+    try:
+        for call in TaxiCall.objects.all():
+            new = TaxiCallHistory.objects.create(call_id=call.call_id, type=call.type, number=call.number,call_time = call.call_time,
+                                           details=call.details,address=call.address,isMap=call.isMap,longitude=call.longitude,latitude=call.latitude)
+            car =None
+            try:
+               car = call.car_set.all()[0]
+            except:
+                pass
+
+            if(car):
+               new.car_set.create(car_type=car.car_type,car_number=car.car_number,car_time=car.car_time)
+               new.save()
+
+    except:
+        print("there are no selected calls")
 
     TaxiCall.objects.all().delete()
     return HttpResponseRedirect(reverse("taxibot:callList"))
 
-
-
-
+def clearDBHistory(request):  # delete all calls
+    TaxiCallHistory.objects.all().delete()
+    return HttpResponseRedirect(reverse("taxibot:db_list"))
 
 
 ####################################################################################################################################################################################
