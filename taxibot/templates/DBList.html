@@ -52,7 +52,6 @@
             <tr>
                 <th>ID</th>
                 <th>дата<th>
-                <th>Время</th>
                 <th>Тип</th>
                 <th>Адрес</th>
                 <th>Номер тел</th>
@@ -68,8 +67,8 @@
 
             {% for call in call_list %}
       <tr>
-        <td>{{ call.call_id }}</td>
-          <td>{{ call.call_date }}</td>
+        <td>{{ call.call_id }}</td> <td>{{ call.call_date }}</td>
+
         <td>{{ call.call_time }}</td>
         <td>{{ call.type }}</td>
         <td>{% if call.IsMap %}
