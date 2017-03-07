@@ -250,7 +250,7 @@ class BotManager:
             self.bot.send_message(chat_id,
                              "\n\n\n Машина приехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " + info[
                                  "car_number"]+" \n Счастливого пути!")
-            self.bot.send_contact(chat_id, info["driver_number"], "номер диспетчерской")
+            self.bot.send_contact(chat_id, info["driver_number"], "Taxi Favorit диспетчерской")
 
     # дпные о водителе из бд по chat_id
     def DriverInfo(self,chat_id):
@@ -309,12 +309,12 @@ class BotManager:
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"])
-                  self.bot.send_contact(current_chat_id, info["driver_number"], "номер диспетческой", reply_markup=keyboard)
+                  self.bot.send_contact(current_chat_id, info["driver_number"], "Taxi Favorit диспетческой", reply_markup=keyboard)
             else:
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"] + "\n машина прибудет через " + str(info["time"]) + " минут \n")
-                  self.bot.send_contact(current_chat_id, info["driver_number"], "номер диспетчерской", reply_markup=keyboard)
+                  self.bot.send_contact(current_chat_id, info["driver_number"], "Taxi Favorit диспетчерской", reply_markup=keyboard)
 
     def Help(self,message):
         current_chat_id = message["chat"]["id"]
