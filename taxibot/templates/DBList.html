@@ -58,7 +58,6 @@
                 <th>Коментарии</th>
                 <th>Машина</th>
                 <th>Номер машины</th>
-                <th>Время прибытия</th>
             </tr>
             </thead>
             <tbody>
@@ -87,7 +86,6 @@
             {% if  forloop.first %}
              <td>{{ car.car_type }} </td>
              <td>{{ car.car_number }} </td>
-             <td>{{ car.car_time }} минут</td>
             {% endif %}
          {% endfor %}
 

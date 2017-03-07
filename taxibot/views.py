@@ -113,7 +113,7 @@ def clearDB(request):  # delete all calls
                 pass
 
             if(car):
-               new.car_set.create(car_type=car.car_type,car_number=car.car_number,car_time=car.car_time)
+               new.carhistory_set.create(car_type=car.car_type,car_number=car.car_number)
                new.save()
 
     except:

@@ -47,6 +47,5 @@ class CarHistory(models.Model):
 
     car_type = models.CharField(max_length=200)
     car_number = models.CharField(max_length=20)
-    car_time = models.IntegerField(default=0)
     taxi = models.ForeignKey(TaxiCall)
 
