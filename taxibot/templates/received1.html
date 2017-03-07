@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Favorit Taxi BOT</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Favorit Taxi BOT</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Сбросить базу данных</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Новые</a></li>
+                        <li><a href="waiting.html">Ожидание ответа</a></li>
+                        <li><a href="received.html"  class="activeNav">Принятые</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+    <div class="col-sm-9 col-md-9 col-lg-9 mainDiv">
+        <div class="panel table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Время</th>
+                <th>Тип</th>
+                <th>Адрес</th>
+                <th>Номер тел</th>
+                <th>Коментарии</th>
+                <th>Машина</th>
+                <th>Номер машины</th>
+                <th>Время прибытия</th>
+                <th>Статус</th>
+                <th>Выбрать</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>19:27</td>
+                <td>Такси</td>
+                <td>Oybek m</td>
+                <td>+998977081127</td>
+                <td>Нужен такси люкс класса</td>
+                <td>Captiva LUX Class</td>
+                <td>01/S027KH</td>
+                <td>5 минут</td>
+                <td>В пути</td>
+                <td>
+                    <div class="radio">
+                        <label><input type="radio" name="chooseRadio"></label>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <section class="col-sm-3 col-md-3 col-lg-3 rightBar">
+        <form>
+            <input type="submit" class="btn btn-success" value="Водитель прибыл">
+        </form>
+
+        <div id="map"></div>
+    </section>
+    </main>
+    </div>
+</div>
+    <script type="text/javascript">
+        var map;
+        function initMap(id1,id2) {
+            var longitude = id1;
+            var latitude = id2;
+            if (longitude){
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: id1, lng: id2},
+                    zoom: 15
+                });
+
+                var marker = new google.maps.Marker({
+                    position:  {lat: id1, lng: id2},
+                    map: map,
+                    title: 'Местоположение клиента!'
+                });
+            }
+            else{
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 41.312123, lng: 69.258301},
+                    zoom: 10
+                });
+            }
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg2dnWZ9CfzW39z8Gwy4IbhspCS-4mOYM&callback=initMap">
+    </script>
+</body>
+</html>

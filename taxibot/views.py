@@ -19,7 +19,7 @@ botManager = BotManager(bot)
 
 
 class CallListView(generic.ListView):  #FIRST SECTION, CALLS JUST COME AND HASN'T  ACCEPTED BY MANAGER YED
-    template_name = "index.html"
+    template_name = "index1.html"
     context_object_name = "call_list"
     def get_queryset(self):
         call_list = TaxiCall.objects.filter(status="new").order_by("-call_time")

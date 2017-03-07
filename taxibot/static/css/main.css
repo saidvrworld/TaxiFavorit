@@ -1,63 +1,61 @@
-body,html {
-  padding: 0 !important;
-  margin: 0 !important;
+html {
+    margin: 0;
+    padding: 0;
+    height: 100% !important;
 }
-header {
-	color: #fff !important;
+body{
+    padding-top: 65px;
 }
-.main_content{
-  margin: 10px;
-	width: 75% !important;
+.navbar {
+    background: #009688;
+    border-radius: 0;
+    margin: 0!important;
+    padding: 0 20px;
+    z-index: 999;
 }
-#main_content {
-  margin: 0 auto;
+.navbar-default .navbar-toggle .icon-bar {background-color: white;}
+.navbar-brand, .navbar-nav>li>a {
+    color: #ffffff !important;
 }
-.right_bar {
-	width: 22% !important;
-	height: 100% !important;
-	position: fixed;   
-	right: 0;
-  overflow-y:scroll;
-  overflow-x: hidden;
-  padding: 10px;
-	background: #90CAF9;
+main {
 }
-.right_bar select, .right_bar input {
-  margin-top: 5px;
-  width: 150px;
-  height: 10px;
+.rightBar {
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    height: 100% !important;
+    min-height: 100px;
+    padding: 20px 15px;
+    position: fixed;
+    right: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+@media (max-width:992px){
+    .rightBar {
+        width:100%;
+        position: inherit;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+}
+.rightBar form {
+    width:  100%;
+}
+.rightBar input {
+    margin: 10px 0 20px 0;
+}
+.mainDiv{
+    margin: 15px 0;
 }
 #map {
-  margin-top: 50px;
-    height:40%;
+    height: 350px;
+    width: 100%;
+    margin-bottom: 100px;
 }
-
-.div_nav {
-  min-height: 50px;
+.navbar-nav a:hover {
+    color: #BDBDBD !important;
 }
-.div_nav div {
-  margin: 0 auto;
+.navbar-nav a.activeNav {
+    color: #E0E0E0 !important;
+    font-weight: bold;
 }
-.div_nav a {
-  background: #00BCD4;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin: 0 auto;
-  color: #fff;
-  text-decoration: none;
-}
-.button {
-    width : 200px;
-  color: #900;
-  font-weight: bold;
-  font-size: 500%;
-  text-transform: uppercase;
-}
-.mapbutton {
-    width : 150px;
-  color: #900;
-  font-weight: bold;
-  font-size: 400%;
-  text-transform: uppercase;
-}
-
