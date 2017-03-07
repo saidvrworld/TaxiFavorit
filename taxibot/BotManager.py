@@ -309,15 +309,15 @@ class BotManager:
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"])
-                  self.bot.send_contact(current_chat_id, info["driver_number"], "наш номер", reply_markup=keyboard)
+                  self.bot.send_contact(current_chat_id, info["driver_number"], "номер диспетческой", reply_markup=keyboard)
             else:
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"] + "\n машина прибудет через " + str(info["time"]) + " минут \n")
-                  self.bot.send_contact(current_chat_id, info["driver_number"], "номер водителя", reply_markup=keyboard)
+                  self.bot.send_contact(current_chat_id, info["driver_number"], "номер диспетчерской", reply_markup=keyboard)
 
     def Help(self,message):
         current_chat_id = message["chat"]["id"]
 
         self.bot.send_message(current_chat_id, "Обратитесь в наш центр поддержки\n ")
-        self.bot.send_contact(current_chat_id, "998977377055", "Служба поддержки")
+        self.bot.send_contact(current_chat_id, "998951701166", "Служба поддержки")

@@ -42,7 +42,7 @@ class acceptedCalls(generic.ListView):    # USERS ALREADY AGREE WITH CAR AND CAR
         return call_list
 
 def setDriver(request):     #ATACHING CAR TO USERS CALL
-     CallCenterNumber = "+998977377055"
+     CallCenterNumber = "200 10 10"
      callId,carType,carNumber,carTime = [None for i in range(4)]
      try:
          callId = request.POST["calls[]"]
