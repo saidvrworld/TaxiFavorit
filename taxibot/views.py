@@ -93,7 +93,7 @@ def SendDriver(request):     #driver is sended to user
          current_call.status = "accepted"
          current_call.save()
 
-     return HttpResponseRedirect(reverse("taxibot:needCarList"))
+     return HttpResponseRedirect(reverse("taxibot:NeedCarList"))
 
 # отправляет клиенту данные о прибытие машины и сбрасывает данные о машине
 def EndCall(request):
