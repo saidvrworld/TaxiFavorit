@@ -33,6 +33,16 @@ class calls_with_car_ListView(generic.ListView):   #SECOND SECTION, CALLS ACCEPT
         call_list = TaxiCall.objects.filter(status="waiting").order_by("-call_time")
         return call_list
 
+
+class NeedCarList(generic.ListView):   #SECOND SECTION, CALLS ACCEPTED AND HAVE BEEN ATTACHED CAR, NOW MANAGER WAIT FOR USER TO AGREE WITH OFFERED CAR
+
+    template_name = "need_car.html"
+    context_object_name = "call_list"
+    def get_queryset(self):
+        call_list = TaxiCall.objects.filter(status="need_car").order_by("-call_time")
+        return call_list
+
+
 class acceptedCalls(generic.ListView):    # USERS ALREADY AGREE WITH CAR AND CAR ON THE WAY TO USER
 
     template_name = "accepted.html"
@@ -70,6 +80,20 @@ def setDriver(request):     #ATACHING CAR TO USERS CALL
 
      return HttpResponseRedirect(reverse("taxibot:callList"))
 
+
+def SendDriver(request):     #driver is sended to user
+     callId = None
+     try:
+         callId = request.POST["calls[]"]
+     except :
+         print("there are no selected calls")
+     if(callId):
+         current_call = TaxiCall.objects.get(call_id=callId)
+
+         current_call.status = "accepted"
+         current_call.save()
+
+     return HttpResponseRedirect(reverse("taxibot:needCarList"))
 
 # отправляет клиенту данные о прибытие машины и сбрасывает данные о машине
 def EndCall(request):

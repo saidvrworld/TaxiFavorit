@@ -302,7 +302,7 @@ class BotManager:
 
         current_call = self.call_manager.GetCall(current_chat_id)
         if(current_call):
-            current_call.status = "accepted"
+            current_call.status = "need_car"
             current_call.save()
 
             keyboard = telebot.types.InlineKeyboardMarkup()
