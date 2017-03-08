@@ -89,8 +89,12 @@
              <td>{{ car.car_number }} </td>
             {% endif %}
          {% endfor %}
-          <td>{{ call.status}}</td>
-
+        {% if call.status == "accepted_cancel" %}
+             <td><font color="red">отменено</font></td>
+         {% endif %}
+        {% if call.status == "arrived" %}
+            <td><font color="#2f4f4f">прибыл</font></td>
+        {% endif %}
 
             </tr>
 
