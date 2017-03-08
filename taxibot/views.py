@@ -31,6 +31,8 @@ class calls_with_car_ListView(generic.ListView):   #SECOND SECTION, CALLS ACCEPT
     context_object_name = "call_list"
     def get_queryset(self):
         call_list = TaxiCall.objects.filter(status="waiting").order_by("-call_time")
+        new_call_count = TaxiCall.objects.filter(status="waiting").count()
+        call_list.insert(0,new_call_count)
         return call_list
 
 class acceptedCalls(generic.ListView):    # USERS ALREADY AGREE WITH CAR AND CAR ON THE WAY TO USER

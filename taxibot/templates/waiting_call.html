@@ -39,7 +39,7 @@
                         <li><a href="#">Сброс</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                       <li><a href="{% url 'taxibot:callList' %}">Новые</a></li>
+                       <li><a href="{% url 'taxibot:callList' %}">Новые{% for call in call_list %}{% if forloop.first %} {{call}}{% endif %}{% endfor %}</a></li>
                         <li><a href="{% url 'taxibot:calls_with_car' %}" class="activeNav">Ожидание ответа</a></li>
                         <li><a href="{% url 'taxibot:accepted' %}"  >Принятые</a></li>
                     </ul>
@@ -67,6 +67,7 @@
             <tbody>
 
              {% for call in call_list %}
+                 {% if not forloop.first %}
       <tr>
         <td>{{ call.call_id }}</td>
         <td>{{ call.call_time }}</td>
@@ -92,6 +93,7 @@
             {% endif %}
          {% endfor %}
       </tr>
+                 {% endif %}
     {% endfor %}
             </tbody>
         </table>
