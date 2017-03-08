@@ -16,6 +16,9 @@
             window.parent.postMessage("resize", "*");
         }
     </script>
+    <script type="text/javascript">
+    window.setTimeout(function(){ document.location.reload(true); }, 60000);
+    </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -36,10 +39,10 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Сброс</a></li>
+                        <li><a href="{% url 'taxibot:clearDB' %}">Сброс</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                       <li><a href="{% url 'taxibot:callList' %}">Новые{% for call in call_list %}{% if forloop.first %} {{call}}{% endif %}{% endfor %}</a></li>
+                       <li><a href="{% url 'taxibot:callList' %}">Новые</a></li>
                         <li><a href="{% url 'taxibot:calls_with_car' %}" class="activeNav">Ожидание ответа</a></li>
                         <li><a href="{% url 'taxibot:accepted' %}"  >Принятые</a></li>
                     </ul>
