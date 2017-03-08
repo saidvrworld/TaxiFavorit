@@ -40,6 +40,7 @@ class TaxiCallHistory(models.Model):
     type = models.CharField(max_length=100,default="None")
     number = models.CharField(max_length=20,default="None")
     details = models.CharField(max_length=500,default="None")
+    status = models.CharField(max_length=30,default="new")
     call_time = models.TimeField()
     call_date = models.DateField(auto_now=True)
 

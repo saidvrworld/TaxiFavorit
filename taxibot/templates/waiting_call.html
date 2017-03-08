@@ -70,7 +70,6 @@
             <tbody>
 
              {% for call in call_list %}
-                 {% if not forloop.first %}
       <tr>
         <td>{{ call.call_id }}</td>
         <td>{{ call.call_time }}</td>
@@ -96,7 +95,6 @@
             {% endif %}
          {% endfor %}
       </tr>
-                 {% endif %}
     {% endfor %}
             </tbody>
         </table>

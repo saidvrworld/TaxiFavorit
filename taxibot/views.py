@@ -103,8 +103,8 @@ class DBCalls(generic.ListView):    # History of cars
 
 def clearDB(request):  # delete all calls
     #try:
-        for call in TaxiCall.objects.all():
-            new = TaxiCallHistory.objects.create(call_id=call.call_id, type=call.type, number=call.number,call_time = call.call_time,
+        for call in TaxiCall.objects.filter(status__in=["accepted_cancel","arrived"]):
+            new = TaxiCallHistory.objects.create(call_id=call.call_id,status = call.status, type=call.type, number=call.number,call_time = call.call_time,
                                            details=call.details,address=call.address,IsMap=call.IsMap,longitude=call.longitude,latitude=call.latitude)
             car =None
             #try:
