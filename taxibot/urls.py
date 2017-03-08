@@ -3,7 +3,7 @@ from taxibot import views
 
 
 urlpatterns = [url(r'^$', views.CallListView.as_view(), name='callList'),
-               url(r'^$', views.NeedCarList.as_view(), name='needCarList'),
+               url(r'^sendDriver/$', views.NeedCarList.as_view(), name='NeedCarList'),
                url(r'^setDriver/$',views.setDriver, name='setDriver'),
                url(r'^SendDriver/$', views.SendDriver, name='sendDriver'),
                url(r'^clearDB/$', views.clearDB, name='clearDB'),
