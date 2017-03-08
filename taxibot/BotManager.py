@@ -40,8 +40,11 @@ class BotManager:
                 self.prepare_for_Send(message)
             elif (self.call_manager.HasAddress(chat_id=current_chat_id) or self.call_manager.HasCoordinates(
                     chat_id=current_chat_id)):
+                if(current_call.waiting_for == "number"):
+                    self.call_manager.UpdateCall(chat_id=current_chat_id, new_number=message_text)
+                else:
+                    pass
 
-                self.call_manager.UpdateCall(chat_id=current_chat_id, new_details=message_text)
             elif (self.call_manager.HasType(chat_id=current_chat_id)):
 
                 if (current_call.waiting_for == "time"):
@@ -170,7 +173,7 @@ class BotManager:
     # показывает кнопку отправки контакта
     def requestPhone(self,message):
         current_chat_id = message["chat"]["id"]
-
+        self.call_manager.UpdateCall(chat_id=current_chat_id,new_waiting_for="number")
         keyboard = telebot.types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
         button_phone = telebot.types.KeyboardButton(text="Отправить номер телефона", request_contact=True)
         keyboard.add(button_phone)
@@ -181,7 +184,7 @@ class BotManager:
         current_chat_id = message["chat"]["id"]
         number = message["contact"]["phone_number"]
 
-        self.call_manager.UpdateCall(chat_id=current_chat_id, new_number=number)
+        self.call_manager.UpdateCall(chat_id=current_chat_id, new_number=number,new_waiting_for="None")
         self.prepare_for_Send(message)
 
     # выводит все данне о заказе с просьбой потверждения отправки
