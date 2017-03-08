@@ -42,6 +42,8 @@ class BotManager:
                     chat_id=current_chat_id)):
                 if(current_call.waiting_for == "number"):
                     self.call_manager.UpdateCall(chat_id=current_chat_id, new_number=message_text)
+                    self.prepare_for_Send(message)
+
                 else:
                     pass
 
