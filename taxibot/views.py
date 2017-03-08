@@ -102,25 +102,25 @@ class DBCalls(generic.ListView):    # History of cars
         return call_list
 
 def clearDB(request):  # delete all calls
-    #try:
+    try:
         for call in TaxiCall.objects.filter(status__in=["accepted_cancel","arrived"]):
             new = TaxiCallHistory.objects.create(call_id=call.call_id,status = call.status, type=call.type, number=call.number,call_time = call.call_time,
                                            details=call.details,address=call.address,IsMap=call.IsMap,longitude=call.longitude,latitude=call.latitude)
-            car =None
+            #car =None
             #try:
-            car = call.car_set.all()[0]
+            #car = call.car_set.all()[0]
             #except:
              #   pass
 
-            if(car):
-               new.carhistory_set.create(car_type=car.car_type,car_number=car.car_number)
-               new.save()
+            #if(car):
+              # new.carhistory_set.create(car_type=car.car_type,car_number=car.car_number)
+               #new.save()
 
-    #except:
-       # print("there are no selected calls")
+    except:
+       print("there are no selected calls")
 
-        TaxiCall.objects.all().delete()
-        return HttpResponseRedirect(reverse("taxibot:callList"))
+    TaxiCall.objects.all().delete()
+    return HttpResponseRedirect(reverse("taxibot:callList"))
 
 def clearDBHistory(request):  # delete all calls
     TaxiCallHistory.objects.all().delete()
