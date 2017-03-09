@@ -235,6 +235,8 @@ class BotManager:
     # отправляет предложение пользователю
     def SendOffer(self,chat_id, car_type, car_number, arrival_time=None):
 
+        current_call = self.call_manager.GetCall(chat_id=chat_id)
+
         keyboard = telebot.types.InlineKeyboardMarkup()
         accept_button = telebot.types.InlineKeyboardButton(text="✔️ Принять", callback_data="accept")
         cancel_button = telebot.types.InlineKeyboardButton(text="❌ Отменить", callback_data="cancelCall")
@@ -242,7 +244,13 @@ class BotManager:
         keyboard.add(accept_button)
         keyboard.add(cancel_button)
 
-        if (arrival_time):
+        if (current_call.type == "Предварительный Заказ"):
+            self.bot.send_message(chat_id,
+                                  "\n\n\n Ваш заказ принят,машина прибудет в указаное время!" + "\n➡️ Taxi Favorit диспетческая\n📞" +
+                                  "2001010")
+            self.call_manager.RemoveCall(chat_id)
+
+        elif (arrival_time):
             self.bot.send_message(chat_id, "\n🚙 " + car_type + ", " + car_number + "\n 🕚" + arrival_time + " минут",
                              reply_markup=keyboard)
         else:
@@ -310,11 +318,8 @@ class BotManager:
 
             cancel_button = telebot.types.InlineKeyboardButton(text="❌ Отменить", callback_data="accept_cancel")
             keyboard.add(cancel_button)
-            if(current_call.type == "Предварительный Заказ"):
-                self.bot.send_message(current_chat_id,
-                                      "\n\n\n Ваш заказ принят,машина приедет"+"\n➡️ Taxi Favorit диспетческая\n📞" + info["driver_number"])
-                self.call_manager.UpdateCall(chat_id=current_chat_id,new_status="old")
-            elif (info["time"] == 0):
+
+            if (info["time"] == 0):
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"]+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"],reply_markup=keyboard)
