@@ -88,10 +88,11 @@ def SendDriver(request):     #driver is sended to user
      except :
          print("there are no selected calls")
      if(callId):
-         botManager.SendDriver(callId)
+
          current_call = TaxiCall.objects.get(call_id=callId)
          current_call.status = "accepted"
          current_call.save()
+         botManager.SendDriver(current_call.chat_id)
 
      return HttpResponseRedirect(reverse("taxibot:NeedCarList"))
 
@@ -127,18 +128,10 @@ class DBCalls(generic.ListView):    # History of cars
 
 def clearDB(request):  # delete all calls
     try:
-        for call in TaxiCall.objects.filter(status__in=["accepted_cancel","arrived"]):
+        for call in TaxiCall.objects.filter(status__in=["accepted_cancel","arrived"]).order_by("-call_time"):
             new = TaxiCallHistory.objects.create(call_id=call.call_id,status = call.status, type=call.type, number=call.number,call_time = call.call_time,
                                            details=call.details,address=call.address,IsMap=call.IsMap,longitude=call.longitude,latitude=call.latitude)
-            #car =None
-            #try:
-            #car = call.car_set.all()[0]
-            #except:
-             #   pass
 
-            #if(car):
-              # new.carhistory_set.create(car_type=car.car_type,car_number=car.car_number)
-               #new.save()
 
     except:
        print("there are no selected calls")

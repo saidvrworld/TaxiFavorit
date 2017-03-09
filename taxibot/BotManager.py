@@ -268,13 +268,13 @@ class BotManager:
     # дпные о водителе из бд по chat_id
     def DriverInfo(self,chat_id):
         current_call = self.call_manager.GetCall(chat_id)
-        #if (current_call):
+        if (current_call):
 
-        driver = current_call.car_set.all()[0]
-        return {"car_number": driver.car_number, "car_type": driver.car_type, "time": driver.car_time,
+            driver = current_call.car_set.all()[0]
+            return {"car_number": driver.car_number, "car_type": driver.car_type, "time": driver.car_time,
                     "driver_number": driver.driver_number}
-        #else:
-          #  return None
+        else:
+            return None
 
     # отмена на начальном этапе
     def Cancel(self,message):
