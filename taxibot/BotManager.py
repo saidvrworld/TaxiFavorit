@@ -310,7 +310,11 @@ class BotManager:
 
             cancel_button = telebot.types.InlineKeyboardButton(text="❌ Отменить", callback_data="accept_cancel")
             keyboard.add(cancel_button)
-            if (info["time"] == 0):
+            if(current_call.type == "Предварительный Заказ"):
+                self.bot.send_message(current_chat_id,
+                                      "\n\n\n Ваш заказ принят,машина приедет"+"\n➡️ Taxi Favorit диспетческая\n📞" + info["driver_number"])
+                self.call_manager.UpdateCall(chat_id=current_chat_id,new_status="old")
+            elif (info["time"] == 0):
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"]+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"])
@@ -321,6 +325,7 @@ class BotManager:
 
     def Help(self,message):
         current_chat_id = message["chat"]["id"]
+        message_id = message["message_id"]
 
-        self.bot.send_message(current_chat_id, "Обратитесь в наш центр поддержки\n ")
+        self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id, text="Обратитесь в наш центр поддержки\n ")
         self.bot.send_contact(current_chat_id, "998951701166", "Служба поддержки")
