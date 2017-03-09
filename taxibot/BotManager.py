@@ -323,13 +323,13 @@ class BotManager:
 
             if (info["time"] == 0):
                 self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id,
-                                           text="\n\n\n Ваш заказ оформлен,машина выехала\n 🚙")
-                self.bot.send_message(current_chat_id,info["car_type"] + "\n➡️ номер машины " +
+                                           text="\n\n\n Ваш заказ оформлен,машина выехала")
+                self.bot.send_message(current_chat_id," 🚙"+info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"]+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"],reply_markup=keyboard)
             else:
                 self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id,
-                                           text="\n\n\n Ваш заказ оформлен,машина выехала\n 🚙")
-                self.bot.send_message(current_chat_id,info["car_type"] + "\n➡️ номер машины " +
+                                           text="\n\n\n Ваш заказ оформлен,машина выехала")
+                self.bot.send_message(current_chat_id," 🚙"+info["car_type"] + "\n➡️ номер машины " +
                              info["car_number"] + "\n машина прибудет через " + str(info["time"]) + " минут \n"+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"],reply_markup=keyboard)
 
     def Help(self,message):
