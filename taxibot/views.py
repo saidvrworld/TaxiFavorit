@@ -92,6 +92,7 @@ def SendDriver(request):     #driver is sended to user
 
          current_call.status = "accepted"
          current_call.save()
+         botManager.SendDriver(callId)
 
      return HttpResponseRedirect(reverse("taxibot:NeedCarList"))
 

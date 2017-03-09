@@ -314,23 +314,27 @@ class BotManager:
         if(current_call):
             current_call.status = "need_car"
             current_call.save()
+            self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id,
+                                       text="\n\n\n Ваш заказ оформлен,машина выехала")
 
-            keyboard = telebot.types.InlineKeyboardMarkup()
-            info = self.DriverInfo(current_chat_id)
+    def SendDriver(self,current_chat_id):
 
-            cancel_button = telebot.types.InlineKeyboardButton(text="❌ Отменить", callback_data="accept_cancel")
-            keyboard.add(cancel_button)
 
-            if (info["time"] == 0):
-                self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id,
-                                           text="\n\n\n Ваш заказ оформлен,машина выехала")
-                self.bot.send_message(current_chat_id," 🚙"+info["car_type"] + "\n➡️ номер машины " +
-                             info["car_number"]+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"],reply_markup=keyboard)
-            else:
-                self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id,
-                                           text="\n\n\n Ваш заказ оформлен,машина выехала")
-                self.bot.send_message(current_chat_id," 🚙"+info["car_type"] + "\n➡️ номер машины " +
-                             info["car_number"] + "\n машина прибудет через " + str(info["time"]) + " минут \n"+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"],reply_markup=keyboard)
+        keyboard = telebot.types.InlineKeyboardMarkup()
+        info = self.DriverInfo(current_chat_id)
+
+        cancel_button = telebot.types.InlineKeyboardButton(text="❌ Отменить", callback_data="accept_cancel")
+        keyboard.add(cancel_button)
+
+        if (info["time"] == 0):
+            self.bot.send_message(current_chat_id, "\n\n\n Ваш заказ оформлен,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
+                                  info["car_number"] + "\n➡️ Taxi Favorit диспетческая\n📞" + info["driver_number"],
+                                  reply_markup=keyboard)
+        else:
+            self.bot.send_message(current_chat_id,"\n\n\n Ваш заказ оформлен,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
+                                  info["car_number"] + "\n машина прибудет через " + str(
+                info["time"]) + " минут \n" + "\n➡️ Taxi Favorit диспетческая\n📞" + info["driver_number"],
+                                  reply_markup=keyboard)
 
     def Help(self,message):
         current_chat_id = message["chat"]["id"]
