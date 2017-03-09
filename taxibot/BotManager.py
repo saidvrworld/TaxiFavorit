@@ -227,10 +227,10 @@ class BotManager:
     # меняет статус вызова  в базе данных чтобы он был виден диспетчеру
     def SendCall(self,message):
         current_chat_id = message["chat"]["id"]
+        message_id = message["message_id"]
 
-        ready_call = self.call_manager.GetCall(chat_id=current_chat_id)
         self.call_manager.UpdateCall(chat_id=current_chat_id, new_status="new")
-        self.bot.send_message(current_chat_id, "\n Ваш заказ принят,ждите предложений... ⏱")
+        self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id, text="\n Ваш заказ принят,ждите предложений...  ")
 
     # отправляет предложение пользователю
     def SendOffer(self,chat_id, car_type, car_number, arrival_time=None):
@@ -317,11 +317,11 @@ class BotManager:
             elif (info["time"] == 0):
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
-                             info["car_number"]+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"])
+                             info["car_number"]+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"],reply_markup=keyboard)
             else:
                   self.bot.send_message(current_chat_id,
                              "\n\n\n Ваш заказ принят,машина выехала\n 🚙" + info["car_type"] + "\n➡️ номер машины " +
-                             info["car_number"] + "\n машина прибудет через " + str(info["time"]) + " минут \n"+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"])
+                             info["car_number"] + "\n машина прибудет через " + str(info["time"]) + " минут \n"+"\n➡️ Taxi Favorit диспетческая\n📞"+ info["driver_number"],reply_markup=keyboard)
 
     def Help(self,message):
         current_chat_id = message["chat"]["id"]
