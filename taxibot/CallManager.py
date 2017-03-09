@@ -15,10 +15,10 @@ class CallManager:
 
     """ return call is it exist and None is it does not"""
     def GetCall(self,chat_id):
-        if self._IsCall(chat_id) :
+        #if self._IsCall(chat_id) :
             return self._GetCallByID(chat_id)
-        else:
-            return None
+        #else:
+           # return None
 
     """destroy call is it exist"""
     def RemoveCall(self,chat_id):
