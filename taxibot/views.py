@@ -88,11 +88,10 @@ def SendDriver(request):     #driver is sended to user
      except :
          print("there are no selected calls")
      if(callId):
+         botManager.SendDriver(callId)
          current_call = TaxiCall.objects.get(call_id=callId)
-
          current_call.status = "accepted"
          current_call.save()
-         botManager.SendDriver(callId)
 
      return HttpResponseRedirect(reverse("taxibot:NeedCarList"))
 
