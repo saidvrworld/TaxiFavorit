@@ -10,7 +10,7 @@ class CarInline(admin.TabularInline):
 
 class TaxiCallAdmin(admin.ModelAdmin):
     fieldsets = [
-                 ("data", {"fields": ["call_id","chat_id","address", "type", "number","details","longitude","latitude","IsMap","status"], 'classes': ['collapse']}),
+                 ("data", {"fields": ["chat_id","address", "type", "number","details","longitude","latitude","IsMap","status"], 'classes': ['collapse']}),
                  ]
     inlines = [CarInline]
 
