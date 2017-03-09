@@ -315,14 +315,12 @@ class BotManager:
             current_call.status = "need_car"
             current_call.save()
             self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id,
-                                       text="\n\n\n Ваш заказ оформлен,машина выехала")
+                                       text="\n\n\nОформление заказа,ждите...")
 
     def SendDriver(self,current_chat_id):
-
-
-        keyboard = telebot.types.InlineKeyboardMarkup()
         info = self.DriverInfo(current_chat_id)
 
+        keyboard = telebot.types.InlineKeyboardMarkup()
         cancel_button = telebot.types.InlineKeyboardButton(text="❌ Отменить", callback_data="accept_cancel")
         keyboard.add(cancel_button)
 
