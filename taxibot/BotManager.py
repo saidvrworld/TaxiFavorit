@@ -339,5 +339,4 @@ class BotManager:
         current_chat_id = message["chat"]["id"]
         message_id = message["message_id"]
 
-        self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id, text="Обратитесь в наш центр поддержки\n ")
-        self.bot.send_contact(current_chat_id, "998951701166", "Служба поддержки")
+        self.bot.edit_message_text(chat_id=current_chat_id, message_id=message_id, text="Обратитесь в наш центр поддержки\n @favoritHelp ")
